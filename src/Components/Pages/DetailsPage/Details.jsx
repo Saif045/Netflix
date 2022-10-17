@@ -31,7 +31,7 @@ const Details = () => {
 
   return (
     <div className=" text-white ">
-      <div className="absolute  w-full h-full  bg-gradient-to-r from-black">
+      <div className="absolute  w-full h-screen  bg-gradient-to-r from-black">
         {" "}
       </div>
       <img
