@@ -43,7 +43,7 @@ const Details = () => {
         }
       />
 
-      <div className="absolute w-full top-[30%] 2xl:top-[40%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60] lg:max-w-[50%] xl:max-w-[40%] 2xl:max-w-[35%] ">
+      <div className="absolute w-full top-[30%] 2xl:top-[40%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[40%] 2xl:max-w-[35%] ">
         <h1 className=" text-3xl md:text-4xl lg:text-5xl font-bold">
           {" "}
           {movies?.original_name}

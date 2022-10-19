@@ -54,7 +54,7 @@ const Hero = () => {
           alt={movie?.title}
         />
 
-        <div className="absolute w-full top-[20%] p-4 md:p-8">
+        <div className="absolute w-full top-[20%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[45%] 2xl:max-w-[30%]">
           <h1 className=" text-3xl md:text-5xl font-bold">{movie?.title}</h1>
           <div className="my-4">
             <button
@@ -76,7 +76,7 @@ const Hero = () => {
           </p>
 
         </div>
-          <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%]">
+          <p className="w-full  md:max-w-[80%]">
             {shortenString(movie?.overview, 150)}
           </p>
         </div>
