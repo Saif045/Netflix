@@ -1,6 +1,6 @@
 # Netflix
 
-a clone of netflix using react and tmdb api.
+a clone of Netflix using react and tmdb api.
 
 built with React , Tailwind , vite and deployed on netlify
 
