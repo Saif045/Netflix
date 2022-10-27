@@ -7,7 +7,6 @@ const Details = () => {
   const [movies, setMovies] = useState([]);
   let { category, id } = useParams();
 
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -27,7 +26,6 @@ const Details = () => {
     getMovie();
   }, [category, id]);
 
-  // console.log(movies)
 
   return (
     <div className=" text-white ">
@@ -62,12 +60,19 @@ const Details = () => {
           </button>
         </div>
         <div className="inline-flex">
-          <p className="text-gray-400 text-sm hidden sm:flex">
-            Released: {movies?.release_date} <span className="mx-1">|</span>
-          </p>
-          <p className="text-gray-400 text-sm">
-            Rating: {movies?.vote_average}
-          </p>
+          {movies?.release_date && (
+            <p className="text-gray-400 text-sm hidden sm:flex">
+              Released: {movies?.release_date.slice(0, 4)}
+              <span className="mx-1">|</span>
+            </p>
+          )}
+
+          {movies?.vote_average && (
+            <p className="text-gray-400 text-sm">
+              Rating: {movies?.vote_average.toString().slice(0, 3)}
+            </p>
+          )}
+
           {movies?.number_of_seasons && movies?.number_of_episodes && (
             <p className="text-gray-400 text-sm">
               <span className="mx-1">|</span> S: {movies?.number_of_seasons}{" "}

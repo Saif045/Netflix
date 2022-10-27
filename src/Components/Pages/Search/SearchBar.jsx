@@ -64,7 +64,6 @@ const SearchBar = () => {
     }
   }, [searchTerm]);
 
-  console.log(myOptions);
 
   return (
     <div>

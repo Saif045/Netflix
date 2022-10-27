@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import tmdbApi from "../../../api/tmdbApi";
-import Similer from "./Similer";
+import apiConfig from "../../../api/apiConfig";
 
 const SimilerList = () => {
   const [similer, setSimiler] = useState([]);
@@ -19,16 +19,31 @@ const SimilerList = () => {
     getVideo();
   }, [category, id]);
 
-
   return (
-  <div>
-    <h2 className=" text-white font-bold text-2xl p-4 m-1 mt-4 text-center">Similer</h2>
-    <div className=" grid grid-cols-auto-fill sm:grid-cols-auto-fill-sm gap-4 2xl:container m-6 ">
-      {similer.map(( item , index ) => 
-      <Similer item={item} key={index}  />
-      )}
-  </div>
-  </div>
+    <div>
+      <h2 className=" text-white font-bold text-2xl p-4 m-1 mt-4 text-center">
+        Similer
+      </h2>
+      <div className=" grid grid-cols-auto-fill sm:grid-cols-auto-fill-sm gap-4 2xl:container m-6 ">
+        {similer.map((item, index) => {
+          const link = "/" + category + "/" + item?.id;
+          return (
+            <Link to={link} key={index}>
+              <div className="   ">
+                <img
+                  className="w-full h-auto  block "
+                  src={
+                    item?.poster_path &&
+                    `${apiConfig.w500Image(item?.poster_path)}`
+                  }
+                  alt={item?.title}
+                />
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

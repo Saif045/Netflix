@@ -18,15 +18,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-{
-  /*       <div className="sm:mr-6">
-        <button className="text-white pr-2 sm:pr-4 text-sm hidden sm:inline-flex">
-          Sign in
-        </button>
-        <button className="bg-red-600 px-2 sm:px-4 py-2 rounded cursor-pointer text-white text-sm">
-          Sign up
-        </button>
-      </div>
-     */
-}

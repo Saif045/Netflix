@@ -69,10 +69,10 @@ const Hero = () => {
           </div>
           <div className="inline-flex">
           <p className="text-gray-400 text-sm  flex">
-            Released: {movie?.release_date} <span className="mx-1">|</span>
+            Released: {movie?.release_date.slice(0,4)} <span className="mx-1">|</span>
           </p>
           <p className="text-gray-400 text-sm">
-            Rating: {movie?.vote_average} 
+            Rating: {movie?.vote_average.toString().slice(0, 3)} 
           </p>
 
         </div>

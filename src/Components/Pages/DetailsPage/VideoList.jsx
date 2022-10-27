@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import tmdbApi from "../../../api/tmdbApi";
-import Video from "./Video";
 
 const VideoList = () => {
   const [videos, setVideos] = useState([]);
@@ -21,14 +20,14 @@ const VideoList = () => {
   }, [category, id]);
 
   const slideLeft = () => {
-    var slider = document.getElementById("slider" );
+    var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 500;
   };
 
   const slideRight = () => {
-    var slider = document.getElementById("slider" );
+    var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 500;
-  }
+  };
 
   return (
     <>
@@ -40,11 +39,19 @@ const VideoList = () => {
           size={40}
         />
         <div
-       
           id={"slider"}
           className=" h-full w-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative">
           {videos.map((item, i) => (
-            <Video key={i} item={item} />
+
+            <div className=" inline-flex flex-col m-2  " key={i}>
+              <iframe
+                id="hello"
+                className="  w-full  h-full aspect-video	"
+                src={`https://www.youtube.com/embed/${item.key}`}
+                allowFullScreen
+                title="video"></iframe>
+            </div>
+
           ))}
         </div>
         <MdChevronRight

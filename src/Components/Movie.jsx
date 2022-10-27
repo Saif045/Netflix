@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import React from "react";
 import { Link } from "react-router-dom";
 import apiConfig from "../api/apiConfig";
 
 const Movie = ({ item, category }) => {
-  const [like, setlike] = useState(false);
   const link = "/" + category + "/" + item?.id;
 
   return (
     <Link to={link}>
-      {item?.poster_path && 
+      {item?.poster_path && (
         <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
           <img
             className="w-full h-auto block"
@@ -22,16 +20,9 @@ const Movie = ({ item, category }) => {
             <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
               {item.title} {item?.original_name}
             </p>
-            <p>
-              {like ? (
-                <FaHeart className="absolute top-4 left-4 text-gray-300" />
-              ) : (
-                <FaRegHeart className="absolute top-4 left-4 text-gray-300" />
-              )}
-            </p>
           </div>
         </div>
-      }
+      )}
     </Link>
   );
 };
