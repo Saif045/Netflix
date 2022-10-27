@@ -72,7 +72,7 @@ const SearchBar = () => {
           <TbSearch size={30} className="text-white " onClick={searchpop} />
         )}
         {toggleSearch && (
-          <div className="absolute right-20">
+          <div className="absolute top-20 right-6 sm:right-20">
             <div className="min-w-full h-9">
               <div className="w-full h-full relative">
                 <form onSubmit={searchlink}>
@@ -94,13 +94,15 @@ const SearchBar = () => {
                 <div className="w-full h-full ">
                   {filteredData.map((item, key) => {
                     const link = "/" + item.media_type + "/" + item.id;
-
                     return (
                       <Link to={link} onClick={clearInput} key={key}>
                         <div className="absolute  w-full h-full  bg-left bg-opacity-30 bg-black -z-50"></div>
                         <div className="absolute  w-full h-full  bg-gradient-to-r from-black -z-50"></div>
                         <p className="text-white font-bold border-b max-w-3/4 h-full pl-2 p-1 pr-6">
                           {item.title}
+                          <span className="ml-1">
+                            ({item.release_date.slice(0, 4)})
+                          </span>
                         </p>
                       </Link>
                     );
