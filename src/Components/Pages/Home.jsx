@@ -1,7 +1,7 @@
 import React from "react";
-import Hero from "../Hero";
-import Row from "../Row";
-import tmdbApi , { category, movieType, tvType } from "../../api/tmdbApi";
+import Hero from "./HomePage/Hero";
+import Row from "./HomePage/Row";
+import tmdbApi , { movieType, tvType } from "../../api/tmdbApi";
 
 
 const Home = () => {

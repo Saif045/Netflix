@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import apiConfig from "../api/apiConfig";
-import tmdbApi, { movieType } from "../api/tmdbApi";
+import apiConfig from "../../../api/apiConfig";
+import tmdbApi, { movieType } from "../../../api/tmdbApi";
 
 const Hero = () => {
   let navigate = useNavigate();

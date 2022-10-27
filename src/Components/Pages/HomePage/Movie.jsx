@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import apiConfig from "../api/apiConfig";
+import apiConfig from "../../../api/apiConfig";
 
 const Movie = ({ item, category }) => {
   const link = "/" + category + "/" + item?.id;
