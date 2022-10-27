@@ -1,5 +1,5 @@
 import React from "react";
-import SearchList from "./Search/SearchList";
+import SearchList from "./SearchPage/SearchList";
 
 const Search = () => {
   return (
