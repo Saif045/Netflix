@@ -9,10 +9,12 @@ import axios from "axios";
 const SearchBar = () => {
   const [myOptions, setMyOptions] = useState([]);
 
-  const [wordEntered, setWordEntered] = useState("");
+  const [searchTerm, setsearchTerm] = useState("");
+
   const [filteredData, setFilteredData] = useState([]);
 
   const [toggleSearch, setToggleSearch] = useState(false);
+
   const searchpop = () => {
     setToggleSearch(!toggleSearch);
   };
@@ -20,48 +22,47 @@ const SearchBar = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const cancelToken = axios.CancelToken.source();
     const getMovie = async () => {
-      let params = { query: wordEntered, cancelToken: cancelToken.token };
+      let params = { query: searchTerm };
+
       try {
         const response = await tmdbApi.search({ params });
-        setMyOptions((prev) => (prev, response.results));
+        setMyOptions(response.results);
       } catch {
         console.log("error");
       }
     };
-    wordEntered && getMovie();
 
-    return () => {
-      cancelToken.cancel();
-    };
-  }, [wordEntered]);
+    if (searchTerm.length >= 1) getMovie();
 
-  const handleFilter = (event) => {
-    let searchWord = event.target.value;
-    setWordEntered(searchWord);
-
-    const newFilter = myOptions.filter((item) => {
-      return item.title && item.original_language === "en";
-    });
-
-    if (searchWord === "") {
-      setFilteredData([]);
-    } else {
-      setFilteredData(newFilter);
-    }
-  };
+    return () => setMyOptions([]);
+  }, [searchTerm]);
 
   const clearInput = () => {
     setFilteredData([]);
-    setWordEntered("");
+    setsearchTerm("");
     setToggleSearch(false);
   };
 
   const searchlink = () => {
-    wordEntered && navigate("/search/" + wordEntered);
+    searchTerm && navigate("/search/" + searchTerm);
     clearInput;
   };
+
+  const handleFilter = (event) => {
+    let searchWord = event.target.value;
+    setsearchTerm(searchWord);
+  };
+  const newFilter = myOptions.filter((item) => {
+    return item.title && item.original_language === "en";
+  });
+  useEffect(() => {
+    if (searchTerm === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  }, [searchTerm]);
 
   console.log(myOptions);
 
@@ -82,7 +83,7 @@ const SearchBar = () => {
                     className="w-full h-full pl-4 py-2"
                     type="text"
                     placeholder="Search Movies"
-                    value={wordEntered}
+                    value={searchTerm}
                     onChange={handleFilter}
                   />
                   <TbSearch
@@ -94,7 +95,7 @@ const SearchBar = () => {
               </div>
               {filteredData.length != 0 && (
                 <div className="w-full h-full ">
-                  {filteredData.slice(0, 15).map((item, key) => {
+                  {filteredData.map((item, key) => {
                     const link = "/" + item.media_type + "/" + item.id;
 
                     return (
