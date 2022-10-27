@@ -4,7 +4,6 @@ import tmdbApi from "../../../api/tmdbApi";
 import { Link } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { MdClose } from "react-icons/md";
-import axios from "axios";
 
 const SearchBar = () => {
   const [myOptions, setMyOptions] = useState([]);
@@ -63,7 +62,6 @@ const SearchBar = () => {
       setFilteredData(newFilter);
     }
   }, [searchTerm]);
-
 
   return (
     <div>
