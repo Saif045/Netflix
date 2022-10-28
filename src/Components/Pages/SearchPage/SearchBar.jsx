@@ -44,8 +44,6 @@ const SearchBar = () => {
     setToggleSearch(false);
   };
 
-
-
   return (
     <div>
       <div className="searchIcon">
@@ -78,13 +76,10 @@ const SearchBar = () => {
                   {filteredData.map((item, key) => {
                     const link = "/" + item.media_type + "/" + item.id;
                     return (
-                      <Link
-                        to={link}
-                        onClick={clearInput}
-                        key={key}>
+                      <Link to={link} onClick={clearInput} key={key}>
                         <div className="absolute  w-full h-full  bg-left bg-opacity-30 bg-black -z-50"></div>
                         <div className="absolute  w-full h-full  bg-gradient-to-r from-black -z-50"></div>
-                        <p className="text-white font-bold border-b max-w-3/4 h-full pl-2 p-1 pr-6">
+                        <p className="text-white font-bold border-b border-slate-600  max-w-3/4 h-full pl-2 p-1 pr-6">
                           {item.title}
                           <span className="ml-1">
                             (
