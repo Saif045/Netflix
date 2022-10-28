@@ -4,9 +4,12 @@ import NavBar from './Components/NavBar'
 import MovieDetails from './Components/Pages/MovieDetails'
 import Home from './Components/Pages/Home'
 import Search from './Components/Pages/Search'
+import ScrollToTop from './Components/ScrollToTop'
+
 const App = () => {
   return (
     <>
+    <ScrollToTop/>
       <NavBar />
       <Routes >
         <Route path='/' element={<Home/>} />
