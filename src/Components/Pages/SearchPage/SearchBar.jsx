@@ -1,19 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import tmdbApi from "../../../api/tmdbApi";
 import { Link } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { MdClose } from "react-icons/md";
 
-import { UserContext } from '../../Pages/Search'
-
 const SearchBar = () => {
-  const {searchTerm, setsearchTerm}= useContext(UserContext);
-  const {filteredData, setFilteredData} = useContext(UserContext);
-
-  const {toggleSearch , setToggleSearch} = useContext(UserContext);
+  const [toggleSearch, setToggleSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   let navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setToggleSearch(false);
+    setSearchTerm("");
+    setFilteredData([]);
+  }, [pathname]);
 
   useEffect(() => {
     const getMovie = async () => {
@@ -59,7 +63,7 @@ const SearchBar = () => {
                     type="text"
                     placeholder="Search Movies"
                     value={searchTerm}
-                    onChange={(e) => setsearchTerm(e.target.value)}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
                   <TbSearch
                     className="absolute right-2 top-2"
