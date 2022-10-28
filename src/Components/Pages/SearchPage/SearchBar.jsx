@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import tmdbApi from "../../../api/tmdbApi";
 import { Link } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { MdClose } from "react-icons/md";
 
+import { UserContext } from '../../Pages/Search'
+
 const SearchBar = () => {
-  const [searchTerm, setsearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-  const [toggleSearch, setToggleSearch] = useState(false);
+  const {searchTerm, setsearchTerm}= useContext(UserContext);
+  const {filteredData, setFilteredData} = useContext(UserContext);
+
+  const {toggleSearch , setToggleSearch} = useContext(UserContext);
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -35,13 +39,6 @@ const SearchBar = () => {
 
   const searchlink = () => {
     searchTerm && navigate("/search/" + searchTerm);
-    clearInput();
-  };
-
-  const clearInput = () => {
-    setFilteredData([]);
-    setsearchTerm("");
-    setToggleSearch(false);
   };
 
   return (
@@ -76,7 +73,7 @@ const SearchBar = () => {
                   {filteredData.map((item, key) => {
                     const link = "/" + item.media_type + "/" + item.id;
                     return (
-                      <Link to={link} onClick={clearInput} key={key}>
+                      <Link to={link} key={key}>
                         <div className="absolute  w-full h-full  bg-left bg-opacity-30 bg-black -z-50"></div>
                         <div className="absolute  w-full h-full  bg-gradient-to-r from-black -z-50"></div>
                         <p className="text-white font-bold border-b border-slate-600  max-w-3/4 h-full pl-2 p-1 pr-6">
