@@ -72,7 +72,7 @@ const SearchBar = () => {
                   />
                 </form>
               </div>
-              {filteredData.length != 0 && (
+              {filteredData && (
                 <div className="w-full h-full ">
                   {filteredData.map((item, key) => {
                     const link = "/" + item.media_type + "/" + item.id;
