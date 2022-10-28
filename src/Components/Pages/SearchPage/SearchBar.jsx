@@ -7,6 +7,7 @@ import { MdClose } from "react-icons/md";
 
 const SearchBar = () => {
   const [toggleSearch, setToggleSearch] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
@@ -72,7 +73,7 @@ const SearchBar = () => {
                   />
                 </form>
               </div>
-              {filteredData && (
+              {searchTerm && filteredData.length != 0 && (
                 <div className="w-full h-full ">
                   {filteredData.map((item, key) => {
                     const link = "/" + item.media_type + "/" + item.id;
