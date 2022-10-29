@@ -35,7 +35,6 @@ body {
 .hero-container {
   height: 85vh;
 }
-/* "sticky h-20 flex items-center justify-between z-[100] w-full  top-0" */
 
 .headerUp {
   position: absolute;
