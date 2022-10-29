@@ -50,9 +50,9 @@ const SearchBar = () => {
     <div>
       <div className="searchIcon">
         {toggleSearch ? (
-          <MdClose size={30} className="text-white " onClick={searchpop} />
+          <MdClose size={30} className="mr-4 text-white " onClick={searchpop} />
         ) : (
-          <TbSearch size={30} className="text-white " onClick={searchpop} />
+          <TbSearch size={30} className="mr-4 text-white " onClick={searchpop} />
         )}
         {toggleSearch && (
           <div className="absolute top-20 right-6 sm:right-20">

@@ -37,7 +37,6 @@ const Hero = () => {
     navigate("/movie/" + movie?.id);
   };
 
-  
   return (
     <div className=" w-full hero-container   text-white">
       <div className="w-full h-full">
@@ -54,7 +53,7 @@ const Hero = () => {
           alt={movie?.title}
         />
 
-        <div className="absolute w-full top-[20%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[45%] 2xl:max-w-[30%]">
+        <div className="absolute w-full top-[30%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[45%] 2xl:max-w-[30%]">
           <h1 className=" text-3xl md:text-5xl font-bold">{movie?.title}</h1>
           <div className="my-4">
             <button
@@ -68,14 +67,14 @@ const Hero = () => {
             </button>
           </div>
           <div className="inline-flex">
-          <p className="text-gray-400 text-sm  flex">
-            Released: {movie?.release_date.slice(0,4)} <span className="mx-1">|</span>
-          </p>
-          <p className="text-gray-400 text-sm">
-            Rating: {movie?.vote_average.toString().slice(0, 3)} 
-          </p>
-
-        </div>
+            <p className="text-gray-400 text-sm  flex">
+              Released: {movie?.release_date.slice(0, 4)}{" "}
+              <span className="mx-1">|</span>
+            </p>
+            <p className="text-gray-400 text-sm">
+              Rating: {movie?.vote_average.toString().slice(0, 3)}
+            </p>
+          </div>
           <p className="w-full  md:max-w-[80%]">
             {shortenString(movie?.overview, 150)}
           </p>

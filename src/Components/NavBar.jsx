@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./Pages/SearchPage/SearchBar";
 
 const NavBar = () => {
+  const [color, setColor] = useState("headerUp");
+
+  const listenScrollEvent = (event) => {
+    if (window.scrollY > 0) {
+      return setColor("headerDown");
+    } else if (window.scrollY < 70) {
+      return setColor("headerUp");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+
+    return () => window.removeEventListener("scroll", listenScrollEvent);
+  }, []);
+
   return (
-    <div className="mt-4 flex items-center justify-between p-4 z-[100] w-full absolute top-0">
+    <div className={color}>
       <Link to={"/"}>
         <img
-          className=" sm:ml-6 w-28 cursor-pointer"
+          className=" ml-6 w-28 cursor-pointer"
           src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg"
           alt="NETFLIX"
         />
