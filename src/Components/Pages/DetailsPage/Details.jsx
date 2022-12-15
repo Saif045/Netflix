@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiConfig from "../../../api/apiConfig";
 import tmdbApi from "../../../api/tmdbApi";
+import { motion as m } from "framer-motion";
+import Loader from "react-loaders";
+
+
 
 const Details = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   let { category, id } = useParams();
 
   useEffect(() => {
@@ -12,6 +18,7 @@ const Details = () => {
       top: 0,
       behavior: "smooth",
     });
+    setLoading(true)
   }, [id]);
 
   useEffect(() => {
@@ -19,6 +26,8 @@ const Details = () => {
       try {
         const response = await tmdbApi.detail(category, id);
         setMovies(response);
+      
+
       } catch {
         console.log("error");
       }
@@ -26,17 +35,29 @@ const Details = () => {
     getMovie();
   }, [category, id]);
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { type: "easeIn", duration: 0.8 },
+    },
+  };
+
 
   return (
-    <div className=" text-white ">
-      <div className="absolute  w-full h-screen  bg-gradient-to-r from-black">
+    <m.div   variants={container}
+    initial="hidden"
+    animate="show"
+    exit={{ opacity: 0 }} className="mt-14 w-full h-[92vh]  text-white ">
+      <div className="absolute  w-full  h-[92vh] bg-gradient-to-r from-black">
         {" "}
       </div>
       <img
-        className=" h-screen w-full object-cover"
+        className=" h-[92vh] w-full object-cover"
+        onLoad={()=>setLoading(false)}
         src={
           movies.backdrop_path
-            ? `${apiConfig.originalImage(movies.backdrop_path)}`
+            ?  `${apiConfig.originalImage(movies.backdrop_path)} `
             : ""
         }
       />
@@ -84,7 +105,12 @@ const Details = () => {
           {movies?.overview}
         </p>
       </div>
-    </div>
+      <Loader
+        type="ball-clip-rotate"
+        active={loading}
+        innerClassName="self-center container text-center"
+      />
+    </m.div>
   );
 };
 

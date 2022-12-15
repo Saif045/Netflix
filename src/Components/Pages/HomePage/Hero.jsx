@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiConfig from "../../../api/apiConfig";
 import tmdbApi, { movieType } from "../../../api/tmdbApi";
+import Loader from "react-loaders";
+import { motion as m } from "framer-motion";
 
 const Hero = () => {
   let navigate = useNavigate();
 
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const movie = movies[Math.floor(Math.random() * movies.length)];
 
@@ -18,6 +21,7 @@ const Hero = () => {
           params,
         });
         setMovies(response.results);
+        setLoading(false);
       } catch {
         console.log("error");
       }
@@ -37,10 +41,23 @@ const Hero = () => {
     navigate("/movie/" + movie?.id);
   };
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { type: "easeIn", duration: 0.8 },
+    },
+  };
+
   return (
-    <div className=" w-full hero-container   text-white">
+    <m.div
+    variants={container}
+    initial="hidden"
+    animate="show"
+    exit={{ opacity: 0 }}
+      className=" mt-14 w-full h-[85vh]   text-white">
       <div className="w-full h-full">
-        <div className="absolute  w-full hero-container  bg-gradient-to-r from-black">
+        <div className="absolute  w-full h-[85vh]  bg-gradient-to-r from-black">
           {" "}
         </div>
         <img
@@ -75,12 +92,18 @@ const Hero = () => {
               Rating: {movie?.vote_average.toString().slice(0, 3)}
             </p>
           </div>
-          <p className="w-full  md:max-w-[80%]">
+          <p className="w-full   md:max-w-[80%]">
             {shortenString(movie?.overview, 150)}
           </p>
         </div>
       </div>
-    </div>
+
+      <Loader
+        type="ball-clip-rotate"
+        active={loading}
+        innerClassName="self-center container text-center"
+      />
+    </m.div>
   );
 };
 

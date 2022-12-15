@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import tmdbApi from "../../../api/tmdbApi";
 import apiConfig from "../../../api/apiConfig";
+import { motion as m } from "framer-motion";
 
 const SimilerList = () => {
   const [similer, setSimiler] = useState([]);
@@ -19,6 +20,14 @@ const SimilerList = () => {
     getVideo();
   }, [category, id]);
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { type: "easeIn", duration: 0.8 },
+    },
+  };
+
   return (
     <div>
       <h2 className=" text-white font-bold text-2xl p-4 m-1 mt-4 text-center">
@@ -29,7 +38,12 @@ const SimilerList = () => {
           const link = "/" + category + "/" + item?.id;
           return (
             <Link to={link} key={index}>
-              <div className="   ">
+              <m.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0 }}
+                className="   ">
                 <img
                   className="w-full h-auto  block "
                   src={
@@ -38,7 +52,7 @@ const SimilerList = () => {
                   }
                   alt={item?.title}
                 />
-              </div>
+              </m.div>
             </Link>
           );
         })}

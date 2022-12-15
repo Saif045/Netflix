@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import apiConfig from "../../../api/apiConfig";
 import tmdbApi from "../../../api/tmdbApi";
+import { motion as m } from "framer-motion";
+import Loader from "react-loaders";
 
 const SearchList = () => {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   let { term } = useParams();
 
   useEffect(() => {
@@ -18,6 +22,8 @@ const SearchList = () => {
       try {
         const response = await tmdbApi.search({ params });
         setMovies(response);
+        setLoading(false);
+
       } catch {
         console.log("error");
       }
@@ -25,8 +31,21 @@ const SearchList = () => {
     term && getMovie();
   }, [term]);
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { type: "easeIn", duration: 0.8 },
+    },
+  };
+
   return (
-    <div className=" pt-24">
+    <m.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      exit={{ opacity: 0 }}
+      className=" pt-24">
       <h2 className=" text-white font-bold text-2xl p-4 m-1 mt-4 text-center">
         Results
       </h2>
@@ -50,7 +69,12 @@ const SearchList = () => {
           })}
       </div>
       '<div className="text-white text-center">Page</div>
-    </div>
+      <Loader
+        type="ball-clip-rotate"
+        active={loading}
+        innerClassName="self-center container text-center"
+      />
+    </m.div>
   );
 };
 export default SearchList;

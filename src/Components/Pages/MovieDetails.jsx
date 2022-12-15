@@ -5,6 +5,8 @@ import SimilerList from "./DetailsPage/SimilerList";
 import VideoList from "./DetailsPage/VideoList";
 
 const MovieDetails = () => {
+
+
   return (
     <div>
       <Details />

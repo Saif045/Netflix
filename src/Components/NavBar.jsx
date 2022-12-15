@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./Pages/SearchPage/SearchBar";
 
 const NavBar = () => {
-  const [color, setColor] = useState("headerUp");
 
-  const listenScrollEvent = (event) => {
-    if (window.scrollY > 0) {
-      return setColor("headerDown");
-    } else if (window.scrollY < 70) {
-      return setColor("headerUp");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-
-    return () => window.removeEventListener("scroll", listenScrollEvent);
-  }, []);
 
   return (
-    <div className={color}>
+    <div className='headerDown'>
       <Link to={"/"}>
         <img
           className=" ml-6 w-28 cursor-pointer"

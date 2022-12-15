@@ -2,11 +2,12 @@ import React from "react";
 import Hero from "./HomePage/Hero";
 import Row from "./HomePage/Row";
 import tmdbApi , { movieType, tvType } from "../../api/tmdbApi";
-
+import ScrollToTop from "../ScrollToTop";
 
 const Home = () => {
   return (
     <>
+      <ScrollToTop />
       <Hero />
       <Row rowID='1' category='movie' title="Up Coming Movies" fetchURL={tmdbApi.getMoviesList(movieType.upcoming)} />
 
@@ -19,6 +20,7 @@ const Home = () => {
       <Row rowID='5' category='movie' title="TopRated Movies" fetchURL={tmdbApi.getMoviesList(movieType.top_rated)} />
 
       <Row rowID='6' category='tv' title="Popular Shows" fetchURL={tmdbApi.getTvList(tvType.popular)} />
+
     </>
   );
 };
