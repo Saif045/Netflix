@@ -55,7 +55,7 @@ const Hero = () => {
     initial="hidden"
     animate="show"
     exit={{ opacity: 0 }}
-      className=" mt-14 w-full h-[85vh]   text-white">
+      className="  w-full h-[85vh]   text-white">
       <div className="w-full h-full">
         <div className="absolute  w-full h-[85vh]  bg-gradient-to-r from-black">
           {" "}

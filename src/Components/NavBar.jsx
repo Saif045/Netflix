@@ -6,7 +6,7 @@ const NavBar = () => {
 
 
   return (
-    <div className='headerDown'>
+    <div className='headerUp'>
       <Link to={"/"}>
         <img
           className=" ml-6 w-28 cursor-pointer"

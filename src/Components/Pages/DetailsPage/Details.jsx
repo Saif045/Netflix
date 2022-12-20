@@ -48,7 +48,7 @@ const Details = () => {
     <m.div   variants={container}
     initial="hidden"
     animate="show"
-    exit={{ opacity: 0 }} className="mt-14 w-full h-[92vh]  text-white ">
+    exit={{ opacity: 0 }} className="w-full h-[92vh]  text-white ">
       <div className="absolute  w-full  h-[92vh] bg-gradient-to-r from-black">
         {" "}
       </div>
