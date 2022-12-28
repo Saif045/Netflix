@@ -1,7 +1,7 @@
 # Netflix
 
 
-Welcome to the repository for our Spotify clone built with React, Tailwind CSS, Vite, Redux Toolkit and The Movie Database (tmdb) API.
+Welcome to the repository for our Netflix clone built with React, Tailwind CSS, Vite, Redux Toolkit and The Movie Database (tmdb) API.
 
 
 Installation
