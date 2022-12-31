@@ -48,12 +48,12 @@ const Details = () => {
     <m.div   variants={container}
     initial="hidden"
     animate="show"
-    exit={{ opacity: 0 }} className="w-full h-[92vh]  text-white ">
-      <div className="absolute  w-full  h-[92vh] bg-gradient-to-r from-black">
+    exit={{ opacity: 0 }} className="w-full h-screen  text-white ">
+      <div className="absolute  w-full  h-screen bg-gradient-to-r from-black">
         {" "}
       </div>
       <img
-        className=" h-[92vh] w-full object-cover"
+        className=" h-full w-full object-cover"
         onLoad={()=>setLoading(false)}
         src={
           movies.backdrop_path
@@ -62,7 +62,7 @@ const Details = () => {
         }
       />
 
-      <div className="absolute w-full top-[30%] 2xl:top-[40%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[40%] 2xl:max-w-[35%] ">
+      <div className="absolute w-full top-[30%]  p-4 md:p-8 xs:max-w-[75%] sm:max-w-[65%] md:max-w-[62%] lg:max-w-[50%] xl:max-w-[45%] 2xl:max-w-[40%] ">
         <h1 className=" text-3xl md:text-4xl lg:text-5xl font-bold">
           {" "}
           {movies?.original_name}

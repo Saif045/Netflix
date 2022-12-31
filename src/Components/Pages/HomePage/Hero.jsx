@@ -51,17 +51,17 @@ const Hero = () => {
 
   return (
     <m.div
-    variants={container}
-    initial="hidden"
-    animate="show"
-    exit={{ opacity: 0 }}
-      className="  w-full h-[85vh]   text-white">
+      variants={container}
+      initial="hidden"
+      animate="show"
+      exit={{ opacity: 0 }}
+      className="  w-full h-screen   text-white">
       <div className="w-full h-full">
-        <div className="absolute  w-full h-[85vh]  bg-gradient-to-r from-black">
+        <div className="absolute  w-full h-screen  bg-gradient-to-r from-black">
           {" "}
         </div>
         <img
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover  "
           src={
             movie?.backdrop_path
               ? `${apiConfig.originalImage(movie?.backdrop_path)}`
@@ -70,7 +70,7 @@ const Hero = () => {
           alt={movie?.title}
         />
 
-        <div className="absolute w-full top-[30%] p-4 md:p-8 sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[45%] 2xl:max-w-[30%]">
+        <div className="absolute  w-full top-[25%]  p-4 md:p-8  xs:max-w-[75%] sm:max-w-[65%] md:max-w-[60%] lg:max-w-[50%] xl:max-w-[45%] 2xl:max-w-[30%]">
           <h1 className=" text-3xl md:text-5xl font-bold">{movie?.title}</h1>
           <div className="my-4">
             <button
